@@ -63,14 +63,17 @@ public final class QueryUtils {
                 // Extract "place" for location
                 String place = properties.getString("place");
                 // Extract "time" for time
-                long time = properties.getLong("time");
-                Date dateObject = new Date(time);
+                long timeInMilliseconds = properties.getLong("time");
+                Date dateObject = new Date(timeInMilliseconds);
 
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy: HH:mm");
                 String dateToDisplay = dateFormatter.format(dateObject);
 
+                String date = dateToDisplay.substring(0, 12);
+                String time = dateToDisplay.substring(14);
+
                 // Create Earthquake Java object from magnitude, location, and time
-                Earthquake earthquake = new Earthquake(mag, place, dateToDisplay);
+                Earthquake earthquake = new Earthquake(mag, place, date, time);
                 // Add earthquake to list of earthquakes
                 earthquakes.add(earthquake);
 

@@ -31,10 +31,12 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         TextView magnitude_text_view = (TextView) convertView.findViewById(R.id.magnitude_text_view);
         TextView city_text_view = (TextView) convertView.findViewById(R.id.city_text_view);
         TextView date_text_view = (TextView) convertView.findViewById(R.id.date_text_view);
+        TextView time_text_view = (TextView) convertView.findViewById(R.id.time_text_view);
 
         magnitude_text_view.setText(earthquake.getMagnitude());
-        city_text_view.setText(earthquake.getCity());
+        city_text_view.setText(earthquake.getPlace());
         date_text_view.setText(earthquake.getDate());
+        time_text_view.setText(earthquake.geTime());
 
         return convertView;
     }
