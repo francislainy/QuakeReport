@@ -66,11 +66,11 @@ public final class QueryUtils {
                 long timeInMilliseconds = properties.getLong("time");
                 Date dateObject = new Date(timeInMilliseconds);
 
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy: HH:mm");
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy: H:mm a");
                 String dateToDisplay = dateFormatter.format(dateObject);
 
                 String date = dateToDisplay.substring(0, 12);
-                String time = dateToDisplay.substring(14);
+                String time = dateToDisplay.substring(13);
 
                 // Create Earthquake Java object from magnitude, location, and time
                 Earthquake earthquake = new Earthquake(mag, place, date, time);
