@@ -73,8 +73,12 @@ public final class QueryUtils {
                 String date = dateToDisplay.substring(0, 12);
                 String time = dateToDisplay.substring(13);
 
+                // Extract url
+                String url = properties.getString("url");
+                Log.v("QueryUtils", "url " + url);
+
                 // Create Earthquake Java object from magnitude, location, and time
-                Earthquake earthquake = new Earthquake(mag, place, date, time);
+                Earthquake earthquake = new Earthquake(mag, place, date, time, url);
                 // Add earthquake to list of earthquakes
                 earthquakes.add(earthquake);
 

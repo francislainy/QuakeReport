@@ -1,7 +1,9 @@
 package com.example.android.quakereport;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
 /**
  * Created by Francislainy on 03/01/2017.
  */
@@ -73,6 +76,19 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         city_text_view.setText(city);
         date_text_view.setText(earthquake.getDate());
         time_text_view.setText(earthquake.geTime());
+
+        // Get the url for the item clicked so as to implement click click listener to bring user to
+        // that url
+        final String url = earthquake.getUrl();
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                getContext().startActivity(intent);
+            }
+        });
 
         return convertView;
     }
