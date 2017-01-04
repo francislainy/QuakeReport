@@ -86,7 +86,10 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         Integer val = Integer.valueOf(myDouble.intValue());
 
         switch (val) {
+            case 0:
             case 1:
+                // Or
+                // magnitudeColor = R.color.magnitude1;
                 magnitudeColor = ContextCompat.getColor(getContext(), R.color.magnitude1);
                 break;
             case 2:
@@ -113,11 +116,8 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
             case 9:
                 magnitudeColor = ContextCompat.getColor(getContext(), R.color.magnitude9);
                 break;
-            case 10:
-                magnitudeColor = ContextCompat.getColor(getContext(), R.color.magnitude10plus);
-                break;
             default:
-                magnitudeColor = ContextCompat.getColor(getContext(), R.color.magnitude1);
+                magnitudeColor = ContextCompat.getColor(getContext(), R.color.magnitude10plus);
         }
 
         Log.v("EarthquakeAdapter", val + " val");
