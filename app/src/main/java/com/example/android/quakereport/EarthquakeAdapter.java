@@ -34,14 +34,25 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         TextView date_text_view = (TextView) convertView.findViewById(R.id.date_text_view);
         TextView time_text_view = (TextView) convertView.findViewById(R.id.time_text_view);
 
+         /**
+         * Split the location into two Strings. Some JSON responses will come without a
+          * prefix before their location, and won't have a comma separator, so because of this
+          * we need to handle those cases with a conditional statement
+         */
         String place = earthquake.getPlace();
-        String nearOf = place.substring(0, place.indexOf(",")+1);
-        if(nearOf.equals(""))
+        String nearOf = "";
+        String city = "";
+        if(place.contains(",")) {
+            nearOf = place.substring(0, place.indexOf(","));
+            city = place.substring(place.indexOf(",")+1);
+        }
+        else {
             nearOf = "Near the";
+            city = place.substring(0);
+        }
 
-        String city = place.substring(place.indexOf(",")+1);
 
-        magnitude_text_view.setText(earthquake.getMagnitude());
+        magnitude_text_view.setText(earthquake.getMagnitude()+"");
         near_of_text_view.setText(nearOf);
         city_text_view.setText(city);
         date_text_view.setText(earthquake.getDate());
